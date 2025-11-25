@@ -1,0 +1,20 @@
+PODS:
+  - LANScanner (0.2.1)
+  - lottie-ios (4.5.2)
+
+DEPENDENCIES:
+  - LANScanner
+  - lottie-ios
+
+SPEC REPOS:
+  trunk:
+    - LANScanner
+    - lottie-ios
+
+SPEC CHECKSUMS:
+  LANScanner: 0c7bd7344c92c011d84358984319030e1d336991
+  lottie-ios: 96784afc26ea031d3e2b6cae342a4b8915072489
+
+PODFILE CHECKSUM: bad98beba9f3a33f5791132b140401ad2045c12d
+
+COCOAPODS: 1.16.2

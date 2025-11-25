@@ -6,8 +6,30 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		13A6E44E2ED58D6100AD73C0 /* Pods_NetScope.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFDB99A605D12C844F7E642 /* Pods_NetScope.framework */; };
+		13A6E44F2ED58D6100AD73C0 /* Pods_NetScope.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9AFDB99A605D12C844F7E642 /* Pods_NetScope.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		13A6E4502ED58D6100AD73C0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				13A6E44F2ED58D6100AD73C0 /* Pods_NetScope.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		13A6E41F2ED57F8400AD73C0 /* NetScope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetScope.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		488410A80D5BDD0304DAD051 /* Pods-NetScope.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetScope.debug.xcconfig"; path = "Target Support Files/Pods-NetScope/Pods-NetScope.debug.xcconfig"; sourceTree = "<group>"; };
+		9AFDB99A605D12C844F7E642 /* Pods_NetScope.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NetScope.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A15E0F2813973E843E270E0B /* Pods-NetScope.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetScope.release.xcconfig"; path = "Target Support Files/Pods-NetScope/Pods-NetScope.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13A6E44E2ED58D6100AD73C0 /* Pods_NetScope.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -34,6 +57,8 @@
 			children = (
 				13A6E4212ED57F8400AD73C0 /* NetScope */,
 				13A6E4202ED57F8400AD73C0 /* Products */,
+				1DC2B25CBC078C231BFC3CAC /* Pods */,
+				E672A1BAF96CBE85F9D7C6AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -45,6 +70,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1DC2B25CBC078C231BFC3CAC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				488410A80D5BDD0304DAD051 /* Pods-NetScope.debug.xcconfig */,
+				A15E0F2813973E843E270E0B /* Pods-NetScope.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E672A1BAF96CBE85F9D7C6AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9AFDB99A605D12C844F7E642 /* Pods_NetScope.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -52,9 +94,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13A6E42A2ED57F8700AD73C0 /* Build configuration list for PBXNativeTarget "NetScope" */;
 			buildPhases = (
+				137EBF22F8A389C892318D8B /* [CP] Check Pods Manifest.lock */,
 				13A6E41B2ED57F8400AD73C0 /* Sources */,
 				13A6E41C2ED57F8400AD73C0 /* Frameworks */,
 				13A6E41D2ED57F8400AD73C0 /* Resources */,
+				E5F1B1289B963857E6779455 /* [CP] Embed Pods Frameworks */,
+				13A6E4502ED58D6100AD73C0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -64,8 +109,6 @@
 				13A6E4212ED57F8400AD73C0 /* NetScope */,
 			);
 			name = NetScope;
-			packageProductDependencies = (
-			);
 			productName = NetScope;
 			productReference = 13A6E41F2ED57F8400AD73C0 /* NetScope.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +156,52 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		137EBF22F8A389C892318D8B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NetScope-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5F1B1289B963857E6779455 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NetScope/Pods-NetScope-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NetScope/Pods-NetScope-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NetScope/Pods-NetScope-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		13A6E41B2ED57F8400AD73C0 /* Sources */ = {
@@ -248,6 +337,7 @@
 		};
 		13A6E42B2ED57F8700AD73C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 488410A80D5BDD0304DAD051 /* Pods-NetScope.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -256,11 +346,16 @@
 				DEVELOPMENT_TEAM = 9WVBG69A9A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = NetScope;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Bluetooth access to scan and detect nearby Bluetooth devices";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Bluetooth access is needed to communicate with nearby devices and display their signal information";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Local network access is required to scan devices connected to your Wi-Fi network";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -269,17 +364,22 @@
 				PRODUCT_BUNDLE_IDENTIFIER = yuldshev.NetScope;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		13A6E42C2ED57F8700AD73C0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A15E0F2813973E843E270E0B /* Pods-NetScope.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -288,11 +388,16 @@
 				DEVELOPMENT_TEAM = 9WVBG69A9A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = NetScope;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Bluetooth access to scan and detect nearby Bluetooth devices";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Bluetooth access is needed to communicate with nearby devices and display their signal information";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Local network access is required to scan devices connected to your Wi-Fi network";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,12 +406,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = yuldshev.NetScope;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
