@@ -25,7 +25,7 @@ final class ScanRepository: ScanRepositoryProtocol {
     let context = coreDataStack.newBackgroundContext()
     
     return try await context.perform {
-      let scanSession = ScanSession(context: context)
+      let scanSession = CDScanSession(context: context)
       scanSession.id = session.id
       scanSession.timestamp = session.timestamp
       scanSession.devicesFound = Int16(session.devicesFound)
@@ -33,7 +33,7 @@ final class ScanRepository: ScanRepositoryProtocol {
       for device in session.devices {
         switch device {
           case .bluetooth(let btDevice):
-            let btEntity = BluetoothDevice(context: context)
+            let btEntity = CDBluetoothDevice(context: context)
             btEntity.id = btDevice.id
             btEntity.name = btDevice.name
             btEntity.deviceType = DeviceType.bluetooth.rawValue
@@ -44,7 +44,7 @@ final class ScanRepository: ScanRepositoryProtocol {
             btEntity.scanSession = scanSession
             
           case .lan(let lanDevice):
-            let lanEntity = LANDevice(context: context)
+            let lanEntity = CDLANDevice(context: context)
             lanEntity.id = lanDevice.id
             lanEntity.name = lanDevice.name
             lanEntity.deviceType = DeviceType.lan.rawValue
@@ -66,7 +66,7 @@ final class ScanRepository: ScanRepositoryProtocol {
     let context = coreDataStack.viewContext
     
     return try await context.perform {
-      let request = ScanSession.fetchRequest()
+      let request = CDScanSession.fetchRequest()
       request.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
       
       let sessions = try context.fetch(request)
@@ -78,7 +78,7 @@ final class ScanRepository: ScanRepositoryProtocol {
     let context = coreDataStack.viewContext
     
     return try await context.perform {
-      let request = ScanSession.fetchRequest()
+      let request = CDScanSession.fetchRequest()
       request.predicate = NSPredicate(
         format: "timestamp >= %@ AND timestamp <= %@",
         startDate as NSDate,
@@ -95,7 +95,7 @@ final class ScanRepository: ScanRepositoryProtocol {
     let context = coreDataStack.viewContext
     
     return try await context.perform {
-      let request = ScanSession.fetchRequest()
+      let request = CDScanSession.fetchRequest()
       request.predicate = NSPredicate(
         format: "ANY devices.name CONTAINS[cd] %@",
         deviceName
@@ -111,7 +111,7 @@ final class ScanRepository: ScanRepositoryProtocol {
     let context = coreDataStack.newBackgroundContext()
     
     try await context.perform {
-      let request = ScanSession.fetchRequest()
+      let request = CDScanSession.fetchRequest()
       request.predicate = NSPredicate(format: "id == %@", sessionId as CVarArg)
       
       if let session = try context.fetch(request).first {
@@ -125,7 +125,7 @@ final class ScanRepository: ScanRepositoryProtocol {
     let context = coreDataStack.newBackgroundContext()
     
     try await context.perform {
-      let fetchRequest: NSFetchRequest<NSFetchRequestResult> = ScanSession.fetchRequest()
+      let fetchRequest: NSFetchRequest<NSFetchRequestResult> = CDScanSession.fetchRequest()
       let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
       
       try context.execute(deleteRequest)

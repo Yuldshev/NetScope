@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="24411" systemVersion="25A362" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
-    <entity name="BluetoothDevice" representedClassName="BluetoothDevice" parentEntity="Device" syncable="YES" codeGenerationType="class">
+    <entity name="CDBluetoothDevice" representedClassName="CDBluetoothDevice" parentEntity="CDDevice" syncable="YES" codeGenerationType="class">
         <attribute name="connectionStatus" optional="YES" attributeType="String"/>
         <attribute name="rssi" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="uuid" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="Device" representedClassName="Device" syncable="YES" codeGenerationType="class">
+    <entity name="CDDevice" representedClassName="CDDevice" syncable="YES" codeGenerationType="class">
         <attribute name="deviceType" optional="YES" attributeType="String"/>
-        <attribute name="discoveredAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="discoveredAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="scanSession" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ScanSession" inverseName="devices" inverseEntity="ScanSession"/>
+        <relationship name="scanSession" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDScanSession" inverseName="devices" inverseEntity="CDScanSession"/>
     </entity>
-    <entity name="LANDevice" representedClassName="LANDevice" parentEntity="Device" syncable="YES" codeGenerationType="class">
+    <entity name="CDLANDevice" representedClassName="CDLANDevice" parentEntity="CDDevice" syncable="YES" codeGenerationType="class">
         <attribute name="hostName" optional="YES" attributeType="String"/>
         <attribute name="ipAddress" optional="YES" attributeType="String"/>
         <attribute name="macAddress" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="ScanSession" representedClassName="ScanSession" syncable="YES" codeGenerationType="class">
-        <attribute name="devicesFound" optional="NO" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="id" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="timestamp" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="devices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Device" inverseName="scanSession" inverseEntity="Device"/>
+    <entity name="CDScanSession" representedClassName="CDScanSession" syncable="YES" codeGenerationType="class">
+        <attribute name="devicesFound" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="devices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDDevice" inverseName="scanSession" inverseEntity="CDDevice"/>
     </entity>
 </model>
