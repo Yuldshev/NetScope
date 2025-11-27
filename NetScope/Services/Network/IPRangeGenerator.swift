@@ -1,13 +1,13 @@
 import Foundation
 
 // MARK: - Model
-struct IPRange {
+struct IPRange: Sendable {
   let priority: ScanPriority
   let ipAddresses: [String]
 }
 
 // MARK: - Enum
-enum ScanPriority {
+enum ScanPriority: Equatable, Sendable {
   case high    // .1-.50, .100-.150
   case medium  // .51-.99, .151-.200
   case low     // .201-.254

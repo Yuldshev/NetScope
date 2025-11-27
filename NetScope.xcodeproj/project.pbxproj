@@ -10,14 +10,30 @@
 		13A6E58A2ED5BC2200AD73C0 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 13A6E5892ED5BC2200AD73C0 /* Lottie */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		13A6E7832ED764E200AD73C0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13A6E4172ED57F8400AD73C0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13A6E41E2ED57F8400AD73C0;
+			remoteInfo = NetScope;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		13A6E5B22ED6C99900AD73C0 /* NetScope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetScope.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13A6E7AE2ED8266700AD73C0 /* NetScope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = NetScope.app; path = "/Users/t/Xcode/NetScope/NetScope/build/Debug-iphoneos/NetScope.app"; sourceTree = "<absolute>"; };
+		13A6E7AF2ED8266700AD73C0 /* NetScopeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = NetScopeTests.xctest; path = "/Users/t/Xcode/NetScope/NetScope/build/Debug-iphoneos/NetScope.app/PlugIns/NetScopeTests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		13A6E4212ED57F8400AD73C0 /* NetScope */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = NetScope;
+			sourceTree = "<group>";
+		};
+		13A6E7802ED764E200AD73C0 /* NetScopeTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NetScopeTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -31,6 +47,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		13A6E77C2ED764E200AD73C0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -38,7 +61,7 @@
 			isa = PBXGroup;
 			children = (
 				13A6E4212ED57F8400AD73C0 /* NetScope */,
-				13A6E5B22ED6C99900AD73C0 /* NetScope.app */,
+				13A6E7802ED764E200AD73C0 /* NetScopeTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,8 +85,31 @@
 			);
 			name = NetScope;
 			productName = NetScope;
-			productReference = 13A6E5B22ED6C99900AD73C0 /* NetScope.app */;
+			productReference = 13A6E7AE2ED8266700AD73C0 /* NetScope.app */;
 			productType = "com.apple.product-type.application";
+		};
+		13A6E77E2ED764E200AD73C0 /* NetScopeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13A6E7872ED764E200AD73C0 /* Build configuration list for PBXNativeTarget "NetScopeTests" */;
+			buildPhases = (
+				13A6E77B2ED764E200AD73C0 /* Sources */,
+				13A6E77C2ED764E200AD73C0 /* Frameworks */,
+				13A6E77D2ED764E200AD73C0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13A6E7842ED764E200AD73C0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				13A6E7802ED764E200AD73C0 /* NetScopeTests */,
+			);
+			name = NetScopeTests;
+			packageProductDependencies = (
+			);
+			productName = NetScopeTests;
+			productReference = 13A6E7AF2ED8266700AD73C0 /* NetScopeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -77,6 +123,10 @@
 				TargetAttributes = {
 					13A6E41E2ED57F8400AD73C0 = {
 						CreatedOnToolsVersion = 26.1.1;
+					};
+					13A6E77E2ED764E200AD73C0 = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = 13A6E41E2ED57F8400AD73C0;
 					};
 				};
 			};
@@ -98,12 +148,20 @@
 			projectRoot = "";
 			targets = (
 				13A6E41E2ED57F8400AD73C0 /* NetScope */,
+				13A6E77E2ED764E200AD73C0 /* NetScopeTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		13A6E41D2ED57F8400AD73C0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13A6E77D2ED764E200AD73C0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -120,7 +178,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		13A6E77B2ED764E200AD73C0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		13A6E7842ED764E200AD73C0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13A6E41E2ED57F8400AD73C0 /* NetScope */;
+			targetProxy = 13A6E7832ED764E200AD73C0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		13A6E4282ED57F8700AD73C0 /* Debug */ = {
@@ -326,6 +399,58 @@
 			};
 			name = Release;
 		};
+		13A6E7852ED764E200AD73C0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WVBG69A9A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yuldshev.NetScopeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetScope.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NetScope";
+			};
+			name = Debug;
+		};
+		13A6E7862ED764E200AD73C0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 9WVBG69A9A;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = yuldshev.NetScopeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NetScope.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NetScope";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -343,6 +468,15 @@
 			buildConfigurations = (
 				13A6E42B2ED57F8700AD73C0 /* Debug */,
 				13A6E42C2ED57F8700AD73C0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13A6E7872ED764E200AD73C0 /* Build configuration list for PBXNativeTarget "NetScopeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13A6E7852ED764E200AD73C0 /* Debug */,
+				13A6E7862ED764E200AD73C0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
