@@ -1,8 +1,15 @@
 import SwiftUI
+import Lottie
 
 struct SplashView: View {
   var body: some View {
-    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    ZStack {
+      LottieView(animation: .named("scanner"))
+        .playing(loopMode: .loop)
+        .animationSpeed(1.0)
+        .scaleEffect(4.5)
+    }
+    .ignoresSafeArea()
   }
 }
 

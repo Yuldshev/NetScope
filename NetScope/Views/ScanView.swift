@@ -17,6 +17,7 @@ struct ScanView: View {
             ScanningProgressView(progress: vm.scanProgress)
           }
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         .navigationTitle("NetScope")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
@@ -80,8 +81,8 @@ private extension ScanView {
             Button { vm.clearDevices() } label: {
               Image(systemName: "trash")
                 .padding()
-                .background(.gray.opacity(0.2))
-                .foregroundStyle(.red)
+                .background(.red)
+                .foregroundStyle(.white)
                 .cornerRadius(12)
             }
           }
@@ -96,7 +97,7 @@ private extension ScanView {
   var deviceListSection: some View {
     ZStack {
       if vm.discoveredDevices.isEmpty {
-        emptyState
+        if !vm.isScanning { emptyState }
       } else {
         List {
           ForEach(vm.discoveredDevices) { device in
@@ -109,6 +110,7 @@ private extension ScanView {
             .buttonStyle(.plain)
           }
         }
+        .transition(.move(edge: .top).combined(with: .opacity))
       }
     }
   }
@@ -136,6 +138,6 @@ private extension ScanView {
 }
 
 // MARK: - Preview
-#Preview {
+#Preview("Empty") {
   ScanView()
 }

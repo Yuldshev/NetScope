@@ -21,8 +21,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		13A6E7AE2ED8266700AD73C0 /* NetScope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = NetScope.app; path = "/Users/t/Xcode/NetScope/NetScope/build/Debug-iphoneos/NetScope.app"; sourceTree = "<absolute>"; };
 		13A6E7AF2ED8266700AD73C0 /* NetScopeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = NetScopeTests.xctest; path = "/Users/t/Xcode/NetScope/NetScope/build/Debug-iphoneos/NetScope.app/PlugIns/NetScopeTests.xctest"; sourceTree = "<absolute>"; };
+		13A6E8232ED8560F00AD73C0 /* NetScope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetScope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -62,6 +62,7 @@
 			children = (
 				13A6E4212ED57F8400AD73C0 /* NetScope */,
 				13A6E7802ED764E200AD73C0 /* NetScopeTests */,
+				13A6E8232ED8560F00AD73C0 /* NetScope.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,7 +86,7 @@
 			);
 			name = NetScope;
 			productName = NetScope;
-			productReference = 13A6E7AE2ED8266700AD73C0 /* NetScope.app */;
+			productReference = 13A6E8232ED8560F00AD73C0 /* NetScope.app */;
 			productType = "com.apple.product-type.application";
 		};
 		13A6E77E2ED764E200AD73C0 /* NetScopeTests */ = {
@@ -336,6 +337,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -377,6 +379,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
