@@ -8,13 +8,10 @@ final class HistoryViewModel: ObservableObject {
   @Published private(set) var filteredSessions: [ScanSessionModel] = []
   @Published private(set) var loadingState: LoadingState = .idle
   @Published var alertConfig: AlertConfig?
-  @Published var filterStartDate: Date? {
-    didSet { applyDateFilter() }
-  }
-  @Published var filterEndDate: Date? {
-    didSet { applyDateFilter() }
-  }
+  @Published var filterStartDate: Date? { didSet { applyDateFilter() }}
+  @Published var filterEndDate: Date? { didSet { applyDateFilter() }}
   @Published var isFilteringActive: Bool = false
+  @Published private(set) var isDataLoaded: Bool = false
   
   private let repository: ScanRepositoryProtocol
   
@@ -35,6 +32,33 @@ final class HistoryViewModel: ObservableObject {
     loadingState == .loading
   }
   
+  var isTodayFilterActive: Bool {
+    guard let start = filterStartDate, let end = filterEndDate else { return false }
+    let calendar = Calendar.current
+    let now = Date()
+    let todayStart = calendar.startOfDay(for: now)
+    return calendar.isDate(start, inSameDayAs: todayStart) &&
+    calendar.isDate(end, inSameDayAs: now)
+  }
+  
+  var isWeekFilterActive: Bool {
+    guard let start = filterStartDate, let end = filterEndDate else { return false }
+    let calendar = Calendar.current
+    let now = Date()
+    guard let weekAgo = calendar.date(byAdding: .day, value: -7, to: now) else { return false }
+    return calendar.isDate(start, inSameDayAs: weekAgo) &&
+    calendar.isDate(end, inSameDayAs: now)
+  }
+  
+  var isMonthFilterActive: Bool {
+    guard let start = filterStartDate, let end = filterEndDate else { return false }
+    let calendar = Calendar.current
+    let now = Date()
+    guard let monthAgo = calendar.date(byAdding: .day, value: -30, to: now) else { return false }
+    return calendar.isDate(start, inSameDayAs: monthAgo) &&
+    calendar.isDate(end, inSameDayAs: now)
+  }
+  
   init(repository: ScanRepositoryProtocol) {
     self.repository = repository
   }
@@ -43,8 +67,8 @@ final class HistoryViewModel: ObservableObject {
     self.init(repository: ScanRepository())
   }
   
-  // MARK: - Public Methods
-  func loadSessions() {
+  func loadSessions(forceReload: Bool = false) {
+    guard forceReload || !isDataLoaded else { return }
     guard loadingState != .loading else { return }
     
     loadingState = .loading
@@ -63,6 +87,11 @@ final class HistoryViewModel: ObservableObject {
         )
       }
     }
+  }
+  
+  func refreshAfterChange() {
+    isDataLoaded = false
+    loadSessions(forceReload: true)
   }
   
   func deleteSession(_ session: ScanSessionModel) {

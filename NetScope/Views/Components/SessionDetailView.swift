@@ -7,30 +7,10 @@ struct SessionDetailView: View {
   var body: some View {
     List {
       Section {
-        HStack {
-          Text("Дата")
-          Spacer()
-          Text(session.formattedDate)
-            .foregroundColor(.secondary)
-        }
-        HStack {
-          Text("Всего устройств")
-          Spacer()
-          Text("\(session.devicesFound)")
-            .foregroundColor(.secondary)
-        }
-        HStack {
-          Text("Bluetooth")
-          Spacer()
-          Text("\(session.bluetoothDeviceCount)")
-            .foregroundColor(.secondary)
-        }
-        HStack {
-          Text("LAN")
-          Spacer()
-          Text("\(session.lanDeviceCount)")
-            .foregroundColor(.secondary)
-        }
+        InfoSectionView(title: "Дата") { Text(session.formattedDate) }
+        InfoSectionView(title: "Всего устройств") { Text("\(session.devicesFound)") }
+        InfoSectionView(title: "Bluetooth") { Text("\(session.bluetoothDeviceCount)") }
+        InfoSectionView(title: "LAN") { Text("\(session.lanDeviceCount)") }
       } header: {
         Text("Информация о сессии")
       }
@@ -55,6 +35,7 @@ struct SessionDetailView: View {
   }
 }
 
+// MARK: - Preview
 #Preview {
   SessionDetailView(session: ScanSessionModel())
 }

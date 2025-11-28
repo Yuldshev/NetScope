@@ -28,11 +28,11 @@ struct DeviceRowView: View {
   private var deviceIcon: some View {
     ZStack {
       Circle()
-        .fill(iconBackgroundColor)
+        .fill(device.deviceType.bg)
         .frame(width: 44, height: 44)
       
-      Image(systemName: iconName)
-        .foregroundColor(iconColor)
+      Image(systemName: device.deviceType.icon)
+        .foregroundColor(device.deviceType.color)
         .font(.system(size: 20))
     }
   }
@@ -43,11 +43,7 @@ struct DeviceRowView: View {
     switch device {
       case .bluetooth(let btDevice):
         HStack(spacing: 12) {
-          HStack(spacing: 4) {
-            Image(systemName: "antenna.radiowaves.left.and.right")
-            Text("Bluetooth")
-              .font(.caption)
-          }
+          CustomLabel(title: "Bluetooth", icon: "antenna.radiowaves.left.and.right")
           .foregroundStyle(.blue)
           
           Text("\(btDevice.rssi) dBm")
@@ -57,11 +53,7 @@ struct DeviceRowView: View {
         
       case .lan(let lanDevice):
         HStack(spacing: 12) {
-          HStack(spacing: 4) {
-            Image(systemName: "network")
-            Text("LAN")
-              .font(.caption)
-          }
+          CustomLabel(title: "LAN", icon: "network")
           .foregroundColor(.green)
           
           Text(lanDevice.ipAddress)
@@ -70,31 +62,9 @@ struct DeviceRowView: View {
         }
     }
   }
-  
-  // MARK: - Computed Properties
-  private var iconName: String {
-    switch device.deviceType {
-      case .bluetooth: return "antenna.radiowaves.left.and.right"
-      case .lan: return "network"
-    }
-  }
-  
-  private var iconColor: Color {
-    switch device.deviceType {
-      case .bluetooth: return .blue
-      case .lan: return .green
-    }
-  }
-  
-  private var iconBackgroundColor: Color {
-    switch device.deviceType {
-      case .bluetooth: return Color.blue.opacity(0.1)
-      case .lan: return Color.green.opacity(0.1)
-    }
-  }
 }
 
-
+// MARK: - Preview
 #Preview {
   List {
     DeviceRowView(

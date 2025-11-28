@@ -2,9 +2,7 @@ import SwiftUI
 
 struct ScanView: View {
   @StateObject private var vm = ScanViewModel()
-  @State private var selectedDevice: DeviceModel?
   @State private var showHistory = false
-  @State private var showDeviceDetail = false
   
   var body: some View {
     NavigationView {
@@ -18,30 +16,23 @@ struct ScanView: View {
           }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-        .navigationTitle("NetScope")
-        .navigationBarTitleDisplayMode(.large)
-        .toolbar {
-          ToolbarItem(placement: .topBarTrailing) {
-            NavigationLink(isActive: $showHistory) {
-              HistoryView()
-            } label: {
-              Label("История", systemImage: "clock.arrow.circlepath")
-            }
+        .overlay(alignment: .topTrailing) {
+          NavigationLink(isActive: $showHistory) {
+            HistoryView()
+          } label: {
+            Image(systemName: "clock.arrow.circlepath")
+              .foregroundStyle(.black)
+              .padding()
+              .background(.white)
+              .clipShape(Circle())
+              .padding()
           }
         }
-        .background(
-          NavigationLink(isActive: $showDeviceDetail) {
-            if let device = selectedDevice {
-              DeviceDetailView(device: device)
-            }
-          } label: {
-            EmptyView()
-          }
-        )
         .alert(item: $vm.alertConfig) { config in
           Alert(title: Text(config.title), message: Text(config.message), dismissButton: .default(Text("OK")))
         }
       }
+      .animation(.smooth, value: vm.isScanning)
     }
   }
 }
@@ -49,7 +40,11 @@ struct ScanView: View {
 // MARK: - Helper
 private extension ScanView {
   var statsSection: some View {
-    VStack(spacing: 12) {
+    VStack(alignment: .leading, spacing: 12) {
+      Text("NetScope")
+        .font(.system(size: 32, weight: .bold))
+        .padding()
+      
       HStack(spacing: 16) {
         StatCard(title: "Bluetooth", count: vm.bluetoothDeviceCount, color: .blue)
         StatCard(title: "LAN", count: vm.lanDeviceCount, color: .green)
@@ -60,7 +55,7 @@ private extension ScanView {
       HStack(spacing: 12) {
         if vm.isScanning {
           Button { vm.stopScan() } label: {
-            Label("Остановить", systemImage: "stop.circle.fill")
+            CustomLabel(title: "Остановить", icon: "stop.circle.fill", font: .headline)
               .frame(maxWidth: .infinity)
               .padding()
               .background(.red)
@@ -69,7 +64,7 @@ private extension ScanView {
           }
         } else {
           Button { vm.startScan() } label: {
-            Label("Начать сканирование", systemImage: "antenna.radiowaves.left.and.right")
+            CustomLabel(title: "Начать сканирование", icon: "antenna.radiowaves.left.and.right", font: .headline)
               .frame(maxWidth: .infinity)
               .padding()
               .background(.blue)
@@ -101,43 +96,34 @@ private extension ScanView {
       } else {
         List {
           ForEach(vm.discoveredDevices) { device in
-            Button {
-              selectedDevice = device
-              showDeviceDetail = true
-            } label: {
+            NavigationLink(destination: DeviceDetailView(device: device)) {
               DeviceRowView(device: device)
             }
-            .buttonStyle(.plain)
           }
         }
-        .transition(.move(edge: .top).combined(with: .opacity))
+        .transition(.opacity)
       }
     }
   }
   
   var emptyState: some View {
-    VStack(spacing: 16) {
-      Image(systemName: "network.slash")
-        .resizable()
-        .scaledToFit()
-        .frame(width: 80, height: 80)
-        .foregroundStyle(.gray)
-      
-      Text("Устройства не найдены")
-        .font(.headline)
-        .foregroundStyle(.gray)
-      
-      Text("Нажмите кнопку сканирования для поиска устройств")
-        .font(.subheadline)
+    EmptyStateView(
+      icon: "network.slash",
+      title: "Устройства не найдены",
+      subtitle: "Нажмите кнопку сканирования для поиска устройств"
+    )
+    .overlay(alignment: .bottom) {
+      Text("Created by: @yuldshev")
+        .font(.caption)
         .foregroundStyle(.secondary)
-        .multilineTextAlignment(.center)
-        .padding(.horizontal, 32)
     }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
+    .transition(.opacity)
   }
 }
 
 // MARK: - Preview
 #Preview("Empty") {
-  ScanView()
+  NavigationView {
+    ScanView()
+  }
 }

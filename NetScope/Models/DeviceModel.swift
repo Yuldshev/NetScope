@@ -1,6 +1,6 @@
-import Foundation
+import SwiftUI
 
-// Base protocol
+// MARK: - Base protocol
 protocol DeviceProtocol {
   var id: UUID { get }
   var name: String? { get }
@@ -11,6 +11,31 @@ protocol DeviceProtocol {
 // MARK: - Device type
 enum DeviceType: String, CaseIterable {
   case bluetooth, lan
+  
+  var name: String {
+    switch self {
+    case .bluetooth: return "Bluetooth"
+    case .lan: return "LAN"
+    }
+  }
+  
+  var icon: String {
+    switch self {
+    case .bluetooth: return "antenna.radiowaves.left.and.right"
+    case .lan: return "network"
+    }
+  }
+  
+  var color: Color {
+    switch self {
+    case .bluetooth: return .blue
+    case .lan: return .green
+    }
+  }
+  
+  var bg: Color {
+    color.opacity(0.1)
+  }
 }
 
 // MARK: - Bluetooth device
@@ -101,15 +126,15 @@ enum DeviceModel: Identifiable, Hashable {
   
   var deviceType: DeviceType {
     switch self {
-      case .bluetooth: return .bluetooth
-      case .lan: return .lan
+    case .bluetooth: return .bluetooth
+    case .lan: return .lan
     }
   }
   
   var discoveredAt: Date {
     switch self {
-      case .bluetooth(let device): return device.discoveredAt
-      case .lan(let device): return device.discoveredAt
+    case .bluetooth(let device): return device.discoveredAt
+    case .lan(let device): return device.discoveredAt
     }
   }
 }

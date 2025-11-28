@@ -6,13 +6,9 @@ struct DeviceDetailView: View {
   var body: some View {
     List {
       Section {
-        HStack {
-          Text("Тип")
-          Spacer()
-          deviceTypeLabel
-        }
-        labeledRow(label: "Имя", value: device.name ?? "Неизвестно")
-        labeledRow(label: "Обнаружено", value: formatDate(device.discoveredAt))
+        InfoSectionView(title: "Тип") { deviceTypeLabel }
+        InfoSectionView(title: "Имя") { Text(device.name ?? "Неизвестно") }
+        InfoSectionView(title: "Обнаружено") { Text(formatDate(device.discoveredAt)) }
       } header: {
         Text("Общая информация")
       }
@@ -32,19 +28,9 @@ struct DeviceDetailView: View {
   // MARK: - Bluetooth Details
   private func bluetoothDetailsSection(_ device: BluetoothDeviceModel) -> some View {
     Section {
-      labeledRow(label: "UUID", value: device.uuid)
-      
-      HStack {
-        Text("Уровень сигнала")
-        Spacer()
-        signalStrengthView(rssi: device.rssi)
-      }
-      
-      HStack {
-        Text("Статус подключения")
-        Spacer()
-        connectionStatusBadge(device.connectionStatus)
-      }
+      InfoSectionView(title: "UUID") { Text(device.uuid) }
+      InfoSectionView(title: "Уровень сигнала") { signalStrengthView(rssi: device.rssi) }
+      InfoSectionView(title: "Статус подключения") { connectionStatusBadge(device.connectionStatus) }
     } header: {
       Text("Bluetooth детали")
     }
@@ -53,40 +39,26 @@ struct DeviceDetailView: View {
   // MARK: - LAN Details
   private func lanDetailsSection(_ device: LANDeviceModel) -> some View {
     Section {
-      labeledRow(label: "IP адрес", value: device.ipAddress)
+      InfoSectionView(title: "IP адрес") { Text(device.ipAddress) }
       
       if let mac = device.macAddress {
-        labeledRow(label: "MAC адрес", value: mac)
+        InfoSectionView(title: "MAC адрес") { Text(mac) }
       }
       
       if let hostname = device.hostName {
-        labeledRow(label: "Имя хоста", value: hostname)
+        InfoSectionView(title: "Имя хоста") { Text(hostname) }
       }
     } header: {
       Text("LAN детали")
     }
   }
   
-  // MARK: - Helper Views
-  private func labeledRow(label: String, value: String) -> some View {
-    HStack {
-      Text(label)
-      Spacer()
-      Text(value)
-        .foregroundColor(.secondary)
-    }
-  }
-  
   private var deviceTypeLabel: some View {
-    HStack {
-      Image(systemName: device.deviceType == .bluetooth ? "antenna.radiowaves.left.and.right" : "network")
-      Text(device.deviceType == .bluetooth ? "Bluetooth" : "LAN")
-    }
-    .padding(.horizontal, 12)
-    .padding(.vertical, 6)
-    .background(device.deviceType == .bluetooth ? Color.blue.opacity(0.1) : Color.green.opacity(0.1))
-    .foregroundColor(device.deviceType == .bluetooth ? .blue : .green)
-    .cornerRadius(8)
+    BadgeView(
+      text: device.deviceType.name,
+      icon: device.deviceType.icon,
+      color: device.deviceType.color
+    )
   }
   
   private func signalStrengthView(rssi: Int) -> some View {
@@ -100,12 +72,7 @@ struct DeviceDetailView: View {
   }
   
   private func connectionStatusBadge(_ status: BluetoothConnectionStatus) -> some View {
-    Text(status.displayName)
-      .font(.caption)
-      .padding(.horizontal, 12)
-      .padding(.vertical, 6)
-      .background(statusColor(status).opacity(0.1))
-      .foregroundColor(statusColor(status))
+    BadgeView(text: status.displayName, color: statusColor(status))
   }
   
   // MARK: - Helper Functions

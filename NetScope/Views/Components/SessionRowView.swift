@@ -10,11 +10,11 @@ struct SessionRowView: View {
           .font(.headline)
         
         HStack(spacing: 12) {
-          Label("\(session.bluetoothDeviceCount)", systemImage: "antenna.radiowaves.left.and.right")
+          CustomLabel(title: "\(session.bluetoothDeviceCount)", icon: "antenna.radiowaves.left.and.right")
             .font(.caption)
             .foregroundStyle(.blue)
           
-          Label("\(session.lanDeviceCount)", systemImage: "network")
+          CustomLabel(title: "\(session.lanDeviceCount)", icon: "network")
             .font(.caption)
             .foregroundStyle(.green)
         }
